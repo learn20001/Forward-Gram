@@ -70,8 +70,7 @@ async def help(event):
 @bot.on(events.NewMessage)
 async def echo(event):
     # user = await event.client.get_entity(-1001297647039)
-    if (event.message.document is not None and event.message.sticker is None) \
-            or event.message.video is not None and f'{event.message.chat_id}' in forward_map:
+    if f'{event.message.chat_id}' in forward_map:
         user = await event.client.get_entity(int(forward_map[f'{event.message.chat_id}']))
         print(f">> get it {event.text}")
         await event.client.send_message(user, event.message)
